@@ -1,0 +1,7 @@
+example_user_register.user_register:
+  path: '/user/form/example-register'
+  defaults:
+    _form: '\Drupal\example_user_register\Form\UserRegister'
+    _title: 'UserRegister'
+  requirements:
+    _access: 'TRUE'

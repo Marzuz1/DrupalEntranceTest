@@ -1,0 +1,6 @@
+name: 'example_user_register'
+type: module
+description: 'Example user register'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'Custom'
