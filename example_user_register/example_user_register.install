@@ -1,0 +1,48 @@
+<?php
+
+ // create table dp_user database when install module
+ 
+
+
+
+ /**
+ * @file
+ * Install functions for the example_user_register module.
+ */
+function example_user_register_schema()
+{
+    $schema['user'] = [
+        'fields' => [
+            'iduser' => [
+                'type' => 'serial',
+                'not null' => TRUE
+            ],
+            'fullname' => [
+                'type' => 'varchar',
+                'not null' => TRUE,
+                'length' => 45
+            ],
+            'phonenumber' => [
+                'type' => 'int',
+                'not null' => TRUE,
+            ],
+            'email' => [
+                'type' => 'varchar',
+                'length' =>45
+
+            ],
+            'ages' => [
+                'type' => 'int'
+            ],
+            'aboutme' => [
+                'type' => 'varchar',
+                'length' =>127
+            ],
+
+        ],
+        'primary key' => ['iduser']
+    ];
+    return $schema;
+}
+
+
