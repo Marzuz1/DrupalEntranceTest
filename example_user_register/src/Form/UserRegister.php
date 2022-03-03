@@ -123,6 +123,7 @@ class UserRegister extends FormBase {
         $this->t('You must be over 18 to register ;)')
       );
     }
+    //regrex pattern for email return 1 if match
     $str = $form_state->getValue('email');
     $pattern = "/^[\w.+\-]+@kyanon\.digital$/i";
     if(preg_match($pattern, $str) < 1){
@@ -131,6 +132,7 @@ class UserRegister extends FormBase {
         $this->t('Your Mail isnt belong to @kyanon.digital, please try again')
       );
     }
+    //regrex pattern for phonenumber return 1 if match
     $sdt = $form_state->getValue('phonenumber');
     $patternsdt = "/(84|0[3|5|7|8|9])+([0-9]{8})\b/i";
     if(preg_match($patternsdt, $sdt) < 1){
@@ -154,9 +156,14 @@ class UserRegister extends FormBase {
     //}
     $postData = $form_state->getValues();
 
+    /**
+     * remove unwanted keys form $postData
+     */
     unset($postData['submit'],$postData['form_build_id'],$postData['form_token'],$postData['form_id'],$postData['op']);
 
+    //Query data
     $query = \Drupal::database();
+    //insert data to dp_user
     $query->insert('user')->fields($postData)->execute();
     \Drupal::messenger()->addMessage($this->t('successfully!'),'status');
 
